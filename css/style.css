@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 10% 20% 20% 20% 20% 10%;
+}
+
+.card {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+}
