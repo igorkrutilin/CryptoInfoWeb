@@ -96,16 +96,26 @@ var cryptocurrency_imgs = [
     xlm_img
 ];
 
-// filling columns with info
-for (var i = 1; i <= 4; i++) {
-    for (var j = 1; j <= 4; j++) {
-        var name = cryptocurrencies[(j-1)*4+i-1];
-        var price = get_price(cryptocurrency_codes[(j-1)*4+i-1]);
-        var name_div = "<div class='name'>" + name + "</div>";
-        var price_div = "<div class='price'>" + price + "$</div>";
-        var img = cryptocurrency_imgs[(j-1)*4+i-1];
-        $(name_div).appendTo("#column" + i + " .card:nth-child(" + j + ")");
-        $(price_div).appendTo("#column" + i + " .card:nth-child(" + j + ")");
-        $(img).appendTo("#column" + i + " .card:nth-child(" + j + ")");
+setInterval(function() {
+    // clearing previous data
+    try {
+        $(".name").text("");
+        $(".price").text("");
+    } catch(err) {
+        // doing nothing if function executes first time when we do not have divs with classes .name and .price
     }
-}
+
+    // filling columns with info
+    for (var i = 1; i <= 4; i++) {
+        for (var j = 1; j <= 4; j++) {
+            var name = cryptocurrencies[(j-1)*4+i-1];
+            var price = get_price(cryptocurrency_codes[(j-1)*4+i-1]);
+            var name_div = "<div class='name'>" + name + "</div>";
+            var price_div = "<div class='price'>" + price + "$</div>";
+            var img = cryptocurrency_imgs[(j-1)*4+i-1];
+            $(name_div).appendTo("#column" + i + " .card:nth-child(" + j + ")");
+            $(price_div).appendTo("#column" + i + " .card:nth-child(" + j + ")");
+            $(img).appendTo("#column" + i + " .card:nth-child(" + j + ")");
+        }
+    }
+}, 1000);
